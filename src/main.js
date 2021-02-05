@@ -1,8 +1,9 @@
-import Vue from 'vue'
-import App from './App.vue'
-
-Vue.config.productionTip = false
-
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+import AsciinemaPlayer from "./components/asciinema-player";
+function install(Vue) {
+  Vue.components(AsciinemaPlayer.name, AsciinemaPlayer);
+}
+if (window && window.Vue) install(window.Vue);
+export { AsciinemaPlayer };
+export default {
+  install
+};
