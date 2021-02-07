@@ -17,11 +17,12 @@
 </template>
 <script>
 import AsciinemaPlayer from "@/components/asciinema-player.vue";
-import data from "./record.cast";
+// import data from "./record.cast"; //方式一
 export default {
   data() {
     return {
-      data: data
+      // data: "/cast/record.cast", 方式二
+      data: "/cast/record.json"
     };
   },
   components: {

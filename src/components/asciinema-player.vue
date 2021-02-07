@@ -74,8 +74,12 @@ export default {
         // console.warn("please config src");
         return;
       }
-      let data =
-        "data:application/json;base64," + Base64Instance.encode(this.src);
+      let data = this.src;
+      if (!this.src.endsWith(".json") && !this.src.endsWith(".cast")) {
+        data =
+          "data:application/json;base64," + Base64Instance.encode(this.src);
+      }
+
       this.player = window.asciinema.player.js.CreatePlayer(
         this.$refs.player,
         data,
