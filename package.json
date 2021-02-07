@@ -6,6 +6,11 @@
     "serve": "vue-cli-service serve ./example/main.js",
     "lint": "vue-cli-service lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuchangjunjx/asciinema-player-vue.git"
+  },
+  "homepage": "https://github.com/xuchangjunjx/asciinema-player-vue",
   "main": "src/index.js",
   "module": "src/index.js",
   "unpkg": "src/index.js",
