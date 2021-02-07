@@ -1,15 +1,14 @@
 {
   "name": "@secrets/asciinema-player-vue",
-  "version": "0.1.1",
+  "version": "0.0.1",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve ./example/main.js",
-    "build": "vue-cli-service build --target lib --name asciinema-player-vue --formats commonjs ./src/main.js",
     "lint": "vue-cli-service lint"
   },
-  "main": "dist/asciinema-player-vue.common.js",
-  "module": "dist/asciinema-player-vue.common.js",
-  "unpkg": "dist/asciinema-player-vue.common.js",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "unpkg": "src/index.js",
   "keywords": [
     "asciinema-player",
     "vue"

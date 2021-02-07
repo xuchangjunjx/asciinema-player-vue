@@ -1,4 +1,10 @@
 module.exports = {
+  productionSourceMap: false,
+  configureWebpack: {
+    optimization: {
+      minimize: true
+    }
+  },
   chainWebpack: (config) => {
     config.module
       .rule("cast")

@@ -1,11 +1,11 @@
 <template>
-  <div id="player"></div>
+  <div ref="player"></div>
 </template>
 <script>
 import Base64 from "../utils/Base64";
 const Base64Instance = new Base64();
 export default {
-  name: "asciinema-player",
+  name: "asciinema-player-vue",
   props: {
     src: String,
     cols: Number,
@@ -53,6 +53,11 @@ export default {
       player: null
     };
   },
+  watch: {
+    src() {
+      this.createPlayer();
+    }
+  },
   methods: {
     pause() {
       if (this.player) {
@@ -63,35 +68,43 @@ export default {
       if (this.player) {
         this.player.play();
       }
+    },
+    createPlayer() {
+      if (!this.src) {
+        // console.warn("please config src");
+        return;
+      }
+      let data =
+        "data:application/json;base64," + Base64Instance.encode(this.src);
+      this.player = window.asciinema.player.js.CreatePlayer(
+        this.$refs.player,
+        data,
+        {
+          width: this.cols,
+          height: this.rows,
+          loop: false,
+          "font-size": this.fontSize,
+          title: this.title,
+          author: this.author,
+          "author-img-url": this.authorImgUrl,
+          "author-url": this.authorUrl,
+          theme: this.theme,
+          "idle-time-limit": this.idleTimeLimit,
+          startAt: this.startAt,
+          poster: this.poster,
+          speed: this.speed,
+          autoPlay: this.autoplay,
+          preload: this.preload
+        }
+      );
     }
   },
   beforeDestroy() {
+    window.asciinema.player.js.UnmountPlayer(this.$refs.player);
     this.player = null;
   },
   mounted() {
-    let data =
-      "data:application/json;base64," + Base64Instance.encode(this.src);
-    this.player = window.asciinema.player.js.CreatePlayer(
-      document.getElementById("player"),
-      data,
-      {
-        width: this.cols,
-        height: this.rows,
-        loop: false,
-        "font-size": this.fontSize,
-        title: this.title,
-        author: this.author,
-        "author-img-url": this.authorImgUrl,
-        "author-url": this.authorUrl,
-        theme: this.theme,
-        "idle-time-limit": this.idleTimeLimit,
-        startAt: this.startAt,
-        poster: this.poster,
-        speed: this.speed,
-        autoPlay: this.autoplay,
-        preload: this.preload
-      }
-    );
+    this.createPlayer();
   }
 };
 </script>
