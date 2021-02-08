@@ -47,6 +47,8 @@ module.exports = {
 
 在 example 文件夹中
 
+参数配置和原生插件一样
+
 ```bash
 yarn install && yarn serve
 ```
