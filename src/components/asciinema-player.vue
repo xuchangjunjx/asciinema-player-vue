@@ -54,7 +54,10 @@ export default {
     };
   },
   watch: {
-    src() {
+    src(newValue, oldValue) {
+      if (newValue && oldValue !== newValue) {
+        this.destoryInstance();
+      }
       this.createPlayer();
     }
   },
@@ -70,12 +73,12 @@ export default {
       }
     },
     createPlayer() {
-      if (!this.src) {
-        // console.warn("please config src");
-        return;
-      }
       let data = this.src;
-      if (!this.src.endsWith(".json") && !this.src.endsWith(".cast")) {
+      if (
+        this.scr &&
+        !this.src.endsWith(".json") &&
+        !this.src.endsWith(".cast")
+      ) {
         data =
           "data:application/json;base64," + Base64Instance.encode(this.src);
       }
@@ -101,11 +104,14 @@ export default {
           preload: this.preload
         }
       );
+    },
+    destoryInstance() {
+      window.asciinema.player.js.UnmountPlayer(this.$refs.player);
+      this.player = null;
     }
   },
   beforeDestroy() {
-    window.asciinema.player.js.UnmountPlayer(this.$refs.player);
-    this.player = null;
+    this.destoryInstance();
   },
   mounted() {
     this.createPlayer();

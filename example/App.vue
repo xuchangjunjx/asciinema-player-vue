@@ -13,6 +13,8 @@
       autoplay
       :src="data"
     ></asciinema-player>
+    <button @click="setSrc">setSrc</button>
+    <button @click="setSrc1">setSrc1</button>
   </div>
 </template>
 <script>
@@ -22,11 +24,19 @@ export default {
   data() {
     return {
       // data: "/cast/record.cast", 方式二
-      data: "/cast/record.json"
+      data: null
     };
   },
   components: {
     AsciinemaPlayer
+  },
+  methods: {
+    setSrc() {
+      this.data = "/cast/record.cast";
+    },
+    setSrc1() {
+      this.data = "/cast/record1.cast";
+    }
   }
 };
 </script>
