@@ -75,7 +75,7 @@ export default {
     createPlayer() {
       let data = this.src;
       if (
-        this.scr &&
+        this.src &&
         !this.src.endsWith(".json") &&
         !this.src.endsWith(".cast")
       ) {

@@ -20,7 +20,7 @@ module.exports = {
   devServer: {
     proxy: {
       // demo中我以/cast开头,自己对应修改 换成自己的服务地址
-      ...proxy("cast", "http://www.baidu.com")
+      ...proxy("cast", "localhost:8080/cast")
     }
   },
   chainWebpack: (config) => {

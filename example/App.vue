@@ -19,12 +19,11 @@
 </template>
 <script>
 import AsciinemaPlayer from "@/components/asciinema-player.vue";
-// import data from "./record.cast"; //方式一
+import cast from "./record.cast"; // 本地加载 loading local file
 export default {
   data() {
     return {
-      // data: "/cast/record.cast", 方式二
-      data: null
+      data: cast
     };
   },
   components: {
@@ -32,10 +31,11 @@ export default {
   },
   methods: {
     setSrc() {
-      this.data = "/cast/record.cast";
+      // load from third service
+      this.data = "/cast/just-demo-record.cast";
     },
     setSrc1() {
-      this.data = "/cast/record1.cast";
+      this.data = "/cast/just-demo-record1.cast";
     }
   }
 };
