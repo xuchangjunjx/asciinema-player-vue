@@ -41,7 +41,7 @@ module.exports = {
 :src="/YOUR_SERVER/xxx.cast"
 ```
 
-如果有跨域就配置一个代理,开发环境直接配置 devServer.proxy,和调研普通 API 一样,会发起一个 GET 请求
+如果有跨域就配置一个代理,开发环境直接配置 devServer.proxy,和调用普通 API 一样,会发起一个 GET 请求
 
 ## demo
 
