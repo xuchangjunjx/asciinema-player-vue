@@ -11,6 +11,9 @@ function proxy(alias, url) {
   };
 }
 module.exports = {
+  publicPath:
+    process.env.NODE_ENV === "production" ? "/asciinema-player-vue/" : "/",
+  outputDir: "docs",
   productionSourceMap: false,
   configureWebpack: {
     optimization: {
@@ -23,7 +26,7 @@ module.exports = {
       ...proxy("cast", "localhost:8080/cast")
     }
   },
-  chainWebpack: (config) => {
+  chainWebpack: config => {
     config.module
       .rule("cast")
       .test(/\.cast$/)
