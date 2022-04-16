@@ -37,6 +37,9 @@ export default {
     setSrc1() {
       this.data = "/cast/just-demo-record1.cast";
     }
+  },
+  mounted() {
+    console.log(process.env);
   }
 };
 </script>
